@@ -1,130 +1,391 @@
-/* RESET BÁSICO */
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
-
+/* ===== Tipografías base ===== */
 body {
-  font-family: 'Segoe UI', sans-serif;
-  background-color: #f4f6f8;
+  background-color: #ffe3e8;
+  font-family: 'Lato', sans-serif;
+  color: #333333;
+  margin: 0;
   padding: 20px;
-  color: #333;
 }
 
-.contenedor {
-  max-width: 500px;
-  margin: auto;
-  background: #ffffff;
-  padding: 30px 25px;
-  border-radius: 10px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+h1, h2, h3 {
+  font-family: 'Playfair Display', serif;
+  color: #ff5c8d;
+  margin-bottom: 10px;
 }
 
-h1 {
-  font-size: 28px;
-  color: #009688;
+/* ===== Encabezado ===== */
+header {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+header h1 {
+  font-size: 36px;
   margin-bottom: 5px;
-  text-align: center;
 }
 
-p {
-  text-align: center;
-  margin-bottom: 20px;
-  color: #555;
+header p {
+  font-size: 16px;
+  color: #333333;
 }
 
-form {
+/* ===== Formulario ===== */
+.formulario-seccion {
+  max-width: 600px;
+  margin: 0 auto 30px;
+  background-color: #ffffff;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.05);
+}
+
+.formulario {
   display: flex;
   flex-direction: column;
-  gap: 15px;
-  margin-bottom: 20px;
 }
 
-input, select {
+.campo {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 18px;
+}
+
+.campo label {
+  margin-bottom: 6px;
+  font-weight: bold;
+}
+
+.campo input,
+.campo select {
   padding: 10px;
   border: 1px solid #ccc;
-  border-radius: 6px;
+  border-radius: 8px;
   font-size: 15px;
-  transition: border-color 0.3s;
 }
 
-input:focus, select:focus {
-  border-color: #009688;
-  outline: none;
-}
-
-button {
-  background-color: #009688;
-  color: white;
-  border: none;
-  padding: 12px;
+.btn-principal {
+  background-color: #ff5c8d;
+  color: #ffffff;
+  padding: 12px 20px;
   font-size: 16px;
   font-weight: bold;
-  border-radius: 6px;
+  border: none;
+  border-radius: 8px;
   cursor: pointer;
-  transition: background-color 0.3s;
+  transition: background-color 0.3s ease;
+  margin-top: 10px;
 }
 
-button:hover {
-  background-color: #00796b;
+.btn-principal:hover {
+  background-color: #f56aa8;
 }
 
-/* Mensajes reutilizables */
+/* ===== Mensajes ===== */
 .mensaje {
-  padding: 12px;
-  border-radius: 5px;
-  text-align: center;
+  margin-top: 15px;
   font-weight: bold;
-  transition: opacity 0.3s ease;
-  margin-bottom: 15px;
-}
-
-.mensaje.error {
-  background-color: #ffe5e5;
-  color: #d8000c;
-  border: 1px solid #d8000c;
+  text-align: center;
 }
 
 .mensaje.exito {
-  background-color: #e5ffe5;
-  color: #007a00;
-  border: 1px solid #007a00;
+  color: #009640;
+}
+
+.mensaje.error {
+  color: #e74c3c;
 }
 
 .oculto {
   display: none;
 }
 
-/* Lista de citas */
-.lista-citas .cita {
-  background-color: #f9f9f9;
-  border-left: 5px solid #009688;
-  padding: 12px 16px;
-  border-radius: 6px;
-  margin-bottom: 10px;
-  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
+/* ===== Lista de citas ===== */
+.lista-citas {
+  max-width: 800px;
+  margin: 0 auto 40px;
+}
+
+#citas {
+  margin-top: 20px;
+}
+
+.cita-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  background-color: #ffffff;
+  border-left: 5px solid #ff5c8d;
+  padding: 16px 20px;
+  margin-bottom: 15px;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.07);
+  transition: transform 0.2s ease;
+}
+
+.cita-card:hover {
+  transform: scale(1.01);
+}
+
+.cita-info h3 {
+  margin: 0 0 8px;
+  color: #333;
+}
+
+.cita-info p {
+  margin: 4px 0;
+  color: #555;
+}
+
+.cita-acciones {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.cita-acciones button {
+  font-size: 18px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.cita-acciones button:hover {
+  transform: scale(1.2);
+}
+
+.btn-eliminar {
+  color: #e74c3c;
+}
+
+.btn-editar {
+  color: #2c3e50;
+}
+
+/* ===== Footer ===== */
+footer {
+  text-align: center;
+  padding: 20px 0;
+  font-size: 14px;
+  color: #333333;
+}
+
+.pantalla-inicio {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 80vh;
+  background-color: #fcdde4;
+  text-align: center;
+  padding: 40px 20px;
+  border-radius: 12px;
+  margin-bottom: 30px;
+}
+
+.contenido-inicio h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: 36px;
+  color: #ff5c8d;
+  margin-bottom: 15px;
+}
+
+.contenido-inicio p {
+  font-size: 18px;
+  color: #333333;
+  margin-bottom: 30px;
+}
+
+#btnReservar {
+  background-color: #ff5c8d;
+  color: #ffffff;
+  padding: 14px 28px;
+  font-size: 16px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+#btnReservar:hover {
+  background-color: #f56aa8;
+}
+
+/* === Swiper Carrusel === */
+.swiper {
+  width: 100%;
+  max-width: 600px;
+  height: 300px;
+  margin: 0 auto 30px;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.swiper-slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.swiper-button-next,
+.swiper-button-prev {
+  color: #ff5c8d;
+}
+
+.swiper-pagination-bullet {
+  background-color: #ff5c8d;
+}
+
+/* === ENCABEZADO === */
+.encabezado {
+  background-color: #ffffff;
+  padding: 10px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 2px solid #ff5c8d;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.logo-container {
+  display: flex;
+  align-items: center;
+}
+
+.logo-img {
+  height: 50px;
+  width: auto;
+}
+
+/* Menú */
+.menu-principal {
   position: relative;
 }
 
-.lista-citas .cita strong {
-  font-size: 16px;
-  color: #222;
+.menu-principal ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  position: fixed;
+  top: 0;
+  right: -260px;
+  width: 240px;
+  height: 100vh;
+  background-color: #fff;
+  box-shadow: -2px 0 10px rgba(0, 0, 0, 0.1);
+  padding-top: 80px;
+  transition: right 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  z-index: 2000;
 }
 
-.lista-citas .cita button {
-  background-color: #e74c3c;
-  border: none;
-  padding: 6px 10px;
-  font-size: 14px;
-  color: #fff;
-  border-radius: 4px;
+.menu-principal ul.activo {
+  right: 0;
+}
+
+.menu-principal a {
+  color: #333333;
+  text-decoration: none;
+  font-size: 18px;
+  padding: 10px 20px;
+  display: block;
+  transition: background-color 0.2s ease;
+}
+
+.menu-principal a:hover {
+  background-color: #fcdde4;
+}
+
+.menu-toggle {
+  font-size: 28px;
   cursor: pointer;
-  position: absolute;
-  top: 12px;
-  right: 12px;
+  color: #ff5c8d;
+  z-index: 2100;
+  position: relative;
 }
 
-.lista-citas .cita button:hover {
-  background-color: #c0392b;
+/* Responsive */
+@media (max-width: 768px) {
+  .menu-principal ul {
+    display: none;
+    flex-direction: column;
+    background-color: #fff;
+    position: absolute;
+    top: 70px;
+    right: 20px;
+    padding: 15px 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 12px;
+  }
+
+  .menu-principal ul.activo {
+    display: flex;
+  }
+
+  .menu-toggle {
+    display: block;
+  }
+}
+
+.icon-trash,
+.icon-edit {
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.icon-trash {
+  color: #e74c3c;
+}
+
+.icon-edit {
+  color: #2c3e50;
+}
+
+.icon-trash:hover,
+.icon-edit:hover {
+  transform: scale(1.2);
+}
+
+.btn-editar {
+  color: #2c3e50;
+}
+.cita-card.editando {
+  border-left: 5px solid #009640 !important;
+  background-color: #e6f4ea;
+}
+
+/* ===== Sección Ubicación ===== */
+.seccion-ubicacion {
+  max-width: 800px;
+  margin: 0 auto 50px;
+  background-color: #ffffff;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.05);
+  text-align: center;
+}
+
+.seccion-ubicacion h2 {
+  font-size: 28px;
+  color: #ff5c8d;
+  margin-bottom: 20px;
+}
+
+.mapa {
+  margin-bottom: 20px;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.info-contacto p {
+  margin: 8px 0;
+  font-size: 16px;
+  color: #333333;
 }

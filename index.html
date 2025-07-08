@@ -3,47 +3,155 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>EstetikApp – Agenda de Citas</title>
+  <title>EstetikApp - Agenda de Citas</title>
+
+  <!-- Tipografías -->
+  <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+
+  <!-- Estilos -->
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
 
-  <div class="contenedor">
-    <h1>EstetikApp</h1>
-    <p>Agenda tus citas fácilmente</p>
+  <header class="encabezado">
+  <div class="logo-container">
+    <img src="Image/logo-App.png" alt="Logo EstetikApp" class="logo-img">
+  </div>
+  <nav class="menu-principal">
+    <ul id="menu-lateral">
+      <li><a href="#">Inicio</a></li>
+      <li><a href="#formulario">Reservar</a></li>
+      <li><a href="#ubicacion">Ubicación</a></li>
+      <li><a href="#citas">Mis Citas</a></li>
+    </ul>
+    <div class="menu-toggle" id="menu-toggle">&#9776;</div>
+  </nav>
+</header>
 
-    <!-- Mensaje de error / éxito -->
-    <div id="mensaje" class="mensaje oculto"></div>
 
-    <!-- Formulario -->
-    <form id="formulario">
-      <label for="nombre">Nombre del cliente:</label>
-      <input type="text" id="nombre" name="nombre" required />
-
-      <label for="servicio">Tipo de servicio:</label>
-      <select id="servicio" name="servicio" required>
-        <option value="">Selecciona un servicio</option>
-        <option value="Manicure">Manicure</option>
-        <option value="Pedicure">Pedicure</option>
-        <option value="Corte de cabello">Corte de cabello</option>
-        <option value="Coloración">Coloración</option>
-        <option value="Depilación">Depilación</option>
-      </select>
-
-      <label for="fecha">Fecha:</label>
-      <input type="date" id="fecha" name="fecha" required />
-
-      <label for="hora">Hora:</label>
-      <input type="time" id="hora" name="hora" required />
-
-      <button type="submit">Agendar cita</button>
-    </form>
-
-    <!-- Sección donde se mostrarán las citas -->
-    <h2>Citas programadas</h2>
-    <div id="citas" class="lista-citas"></div>
+  <section id="pantalla-inicio" class="pantalla-inicio">
+  <div class="contenido-inicio">
+    <!-- Swiper Carrusel -->
+<div class="swiper">
+  <div class="swiper-wrapper">
+    <div class="swiper-slide"><img src="Image/imagen-1.jpg" alt="Servicio 1"></div>
+    <div class="swiper-slide"><img src="Image/imagen-2.jpg" alt="Servicio 2"></div>
+    <div class="swiper-slide"><img src="Image/imagen-3.jpg" alt="Servicio 3"></div>
   </div>
 
+  <!-- Flechas de navegación -->
+  <div class="swiper-button-next"></div>
+  <div class="swiper-button-prev"></div>
+
+  <!-- Paginación opcional -->
+  <div class="swiper-pagination"></div>
+</div>
+    <h1>Bienvenida a EstetikApp</h1>
+    <p>Tu belleza empieza con una buena cita</p>
+    <button id="btnReservar" class="btn-principal">Reservar ahora</button>
+  </div>
+</section>
+
+  <!-- Formulario -->
+  <section class="formulario-seccion">
+    <h2>Agendar una nueva cita</h2>
+    <form id="formulario" class="formulario">
+      <div class="campo">
+        <label for="nombre">Nombre del cliente</label>
+        <input type="text" id="nombre" placeholder="Ej. María Pérez" required />
+      </div>
+
+      <div class="campo">
+        <label for="servicio">Servicio</label>
+        <select id="servicio" required>
+          <option value="">Seleccionar</option>
+          <option value="Corte de cabello">Corte de cabello</option>
+          <option value="Uñas">Uñas</option>
+          <option value="Depilación">Depilación</option>
+          <option value="Maquillaje">Maquillaje</option>
+        </select>
+      </div>
+
+      <div class="campo">
+        <label for="fecha">Fecha</label>
+        <input type="date" id="fecha" required />
+      </div>
+
+      <div class="campo">
+        <label for="hora">Hora</label>
+        <input type="time" id="hora" required />
+      </div>
+
+      <button type="submit" class="btn-principal" id="btnSubmit">Agendar cita</button>
+    </form>
+
+    <p id="mensaje" class="mensaje oculto"></p>
+  </section>
+
+  <!-- Lista de citas -->
+  <section class="lista-citas">
+    <h2>Citas registradas</h2>
+    <div id="citas"></div>
+  </section>
+
+<!-- Sección de Ubicación -->
+<section id="ubicacion" class="seccion-ubicacion">
+  <h2>¿Dónde nos encontramos?</h2>
+
+  <div class="mapa">
+    <iframe
+      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3976.8514379612046!2d-74.082!3d4.6097!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e3f99a5423fa6c3%3A0x2f47d4e89b88063a!2sBogotá%2C%20Colombia!5e0!3m2!1ses!2sco!4v1719876543210"
+      width="100%"
+      height="300"
+      style="border:0;"
+      allowfullscreen=""
+      loading="lazy"
+    ></iframe>
+  </div>
+
+  <div class="info-contacto">
+    <p><strong>Dirección:</strong> Calle 123 #45-67, Bogotá</p>
+    <p><strong>Teléfono:</strong> 300 123 4567</p>
+    <p><strong>WhatsApp:</strong> +57 300 123 4567</p>
+    <p><strong>Email:</strong> contacto@estetikapp.com</p>
+    <p><strong>Horario:</strong> Lunes a Sábado - 8:00 a.m. a 6:00 p.m.</p>
+
+    <a href="https://wa.me/573001234567" target="_blank" class="btn-principal" style="margin-top: 20px;">
+      Chatear por WhatsApp
+    </a>
+  </div>
+</section>
+
+
+
+  <footer>
+    <p>Hecho con 💖 por Sergio Severiche</p>
+  </footer>
+
+  <!-- JavaScript -->
   <script src="app.js"></script>
+  <!-- Swiper CSS -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
+
+<!-- Swiper JS -->
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+<script>
+  const swiper = new Swiper('.swiper', {
+    loop: true,
+    autoplay: {
+      delay: 4000,
+      disableOnInteraction: false,
+    },
+    navigation: {
+      nextEl: '.swiper-button-next',
+      prevEl: '.swiper-button-prev',
+    },
+    pagination: {
+      el: '.swiper-pagination',
+      clickable: true,
+    }
+  });
+</script>
+
 </body>
 </html>

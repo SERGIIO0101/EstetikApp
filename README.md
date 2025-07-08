@@ -4,7 +4,7 @@ EstetikApp es una aplicación web sencilla desarrollada con tecnologías fronten
 
 ## Captura de pantalla
 
-![Interfaz de EstetikApp](./captura.png)
+![Interfaz de EstetikApp](./Image/Captura.png
 
 ## Tecnologías utilizadas
 
@@ -21,7 +21,8 @@ EstetikApp/
 ├── style.css          # Estilos personalizados
 ├── app.js             # Lógica de validación, guardado y visualización
 ├── README.md          # Este archivo
-└── captura.png        # Captura de pantalla
+└── Image/
+        captura.png    # Captura de pantalla
 ```
 
 ## Funcionalidades actuales

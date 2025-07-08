@@ -1,38 +1,49 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Agenda de Citas - Estética</title>
-  <link rel="stylesheet" href="style.css"> <!-- Enlace al archivo de estilos -->
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>EstetikApp – Agenda de Citas</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <div class="container">
-    <h1>Agenda de Citas</h1>
 
-    <!-- Formulario para crear una nueva cita -->
-    <form id="form-cita">
-      <input type="text" id="nombre" placeholder="Nombre del cliente" required>
-      <select id="servicio" required>
+  <div class="contenedor">
+    <h1>EstetikApp</h1>
+    <p>Agenda tus citas fácilmente</p>
+
+    <!-- Mensaje de error / éxito -->
+    <div id="mensaje" class="mensaje oculto"></div>
+
+    <!-- Formulario -->
+    <form id="formulario">
+      <label for="nombre">Nombre del cliente:</label>
+      <input type="text" id="nombre" name="nombre" required />
+
+      <label for="servicio">Tipo de servicio:</label>
+      <select id="servicio" name="servicio" required>
         <option value="">Selecciona un servicio</option>
-        <option value="Corte de cabello">Corte de cabello</option>
-        <option value="Coloración">Coloración</option>
         <option value="Manicure">Manicure</option>
         <option value="Pedicure">Pedicure</option>
+        <option value="Corte de cabello">Corte de cabello</option>
+        <option value="Coloración">Coloración</option>
         <option value="Depilación">Depilación</option>
-        <option value="Tratamiento facial">Tratamiento facial</option>
       </select>
-      <input type="date" id="fecha" required>
-      <input type="time" id="hora" required min="08:00" max="18:00">
+
+      <label for="fecha">Fecha:</label>
+      <input type="date" id="fecha" name="fecha" required />
+
+      <label for="hora">Hora:</label>
+      <input type="time" id="hora" name="hora" required />
+
       <button type="submit">Agendar cita</button>
     </form>
 
-    <!-- Lista donde se mostrarán las citas programadas -->
+    <!-- Sección donde se mostrarán las citas -->
     <h2>Citas programadas</h2>
-    <ul id="lista-citas"></ul>
+    <div id="citas" class="lista-citas"></div>
   </div>
 
-  <!-- Enlace al archivo JavaScript -->
   <script src="app.js"></script>
 </body>
 </html>

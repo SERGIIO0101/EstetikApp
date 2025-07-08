@@ -1,70 +1,86 @@
-// Establecer el mínimo de fecha como hoy
-const fechaInput = document.getElementById('fecha');
-const hoy = new Date().toISOString().split("T")[0];
-fechaInput.min = hoy;
-
-
-// Referencias al formulario y al elemento donde se mostrarán las citas
-const form = document.getElementById('form-cita');
-const lista = document.getElementById('lista-citas');
-
-// Intentar recuperar citas almacenadas en localStorage, o empezar con un array vacío
+// Obtener el contenedor de citas y el formulario
+const formulario = document.getElementById('formulario');
+const contenedorCitas = document.getElementById('citas');
 let citas = JSON.parse(localStorage.getItem('citas')) || [];
 
-// Función para mostrar las citas en pantalla
-function renderCitas() {
-  // Limpiar la lista actual
-  lista.innerHTML = '';
+// Función reutilizable para mostrar mensajes (error o éxito)
+function mostrarMensaje(texto, tipo = "error") {
+  const mensaje = document.getElementById('mensaje');
+  mensaje.textContent = texto;
+  mensaje.className = `mensaje ${tipo}`;
+  mensaje.classList.remove('oculto');
 
-  // Recorrer el array de citas y crear elementos <li> para cada una
+  setTimeout(() => {
+    mensaje.classList.add('oculto');
+    mensaje.textContent = '';
+  }, 4000);
+}
+
+// Mostrar citas al cargar
+document.addEventListener('DOMContentLoaded', mostrarCitas);
+
+// Evento al enviar el formulario
+formulario.addEventListener('submit', function (e) {
+  e.preventDefault();
+
+  // Obtener valores
+  const nombre = document.getElementById('nombre').value.trim();
+  const servicio = document.getElementById('servicio').value;
+  const fecha = document.getElementById('fecha').value;
+  const hora = document.getElementById('hora').value;
+
+  // Validaciones básicas
+  if (!nombre || !servicio || !fecha || !hora) {
+    mostrarMensaje("❗ Todos los campos son obligatorios.", "error");
+    return;
+  }
+
+  // Validar cita duplicada (fecha + hora)
+  const citaDuplicada = citas.find(cita =>
+    cita.fecha === fecha && cita.hora === hora
+  );
+
+  if (citaDuplicada) {
+    mostrarMensaje("⚠️ Ya hay una cita registrada para esa fecha y hora.", "error");
+    return;
+  }
+
+  // Crear cita
+  const nuevaCita = { nombre, servicio, fecha, hora };
+  citas.push(nuevaCita);
+  localStorage.setItem('citas', JSON.stringify(citas));
+
+  mostrarMensaje("✅ Cita agendada exitosamente.", "exito");
+
+  formulario.reset();
+  mostrarCitas();
+});
+
+// Mostrar las citas en pantalla
+function mostrarCitas() {
+  contenedorCitas.innerHTML = '';
+
+  if (citas.length === 0) {
+    contenedorCitas.innerHTML = '<p>No hay citas registradas.</p>';
+    return;
+  }
+
   citas.forEach((cita, index) => {
-    const li = document.createElement('li');
-    li.textContent = `${cita.nombre} - ${cita.servicio} - ${cita.fecha} ${cita.hora}`;
-
-    // Crear botón para eliminar esta cita
-    const btn = document.createElement('button');
-    btn.textContent = 'Eliminar';
-    btn.onclick = () => {
-      // Eliminar la cita del array
-      citas.splice(index, 1);
-
-      // Guardar el nuevo array en localStorage
-      localStorage.setItem('citas', JSON.stringify(citas));
-
-      // Volver a renderizar la lista actualizada
-      renderCitas();
-    };
-
-    // Agregar el botón al <li> y el <li> a la lista
-    li.appendChild(btn);
-    lista.appendChild(li);
+    const div = document.createElement('div');
+    div.classList.add('cita');
+    div.innerHTML = `
+      <strong>${cita.nombre}</strong> - ${cita.servicio}<br>
+      📅 ${cita.fecha} 🕒 ${cita.hora}
+      <button onclick="eliminarCita(${index})">Eliminar</button>
+    `;
+    contenedorCitas.appendChild(div);
   });
 }
 
-// Manejar el evento de envío del formulario
-form.addEventListener('submit', function(e) {
-  e.preventDefault(); // Evitar que se recargue la página
-
-  // Crear un objeto con los datos ingresados
-  const nuevaCita = {
-    nombre: document.getElementById('nombre').value,
-    servicio: document.getElementById('servicio').value,
-    fecha: document.getElementById('fecha').value,
-    hora: document.getElementById('hora').value
-  };
-
-  // Agregar la nueva cita al array
-  citas.push(nuevaCita);
-
-  // Guardar el array actualizado en localStorage
+// Eliminar cita
+function eliminarCita(index) {
+  citas.splice(index, 1);
   localStorage.setItem('citas', JSON.stringify(citas));
-
-  // Volver a mostrar todas las citas actualizadas
-  renderCitas();
-
-  // Limpiar el formulario
-  form.reset();
-});
-
-// Mostrar las citas al cargar la página
-renderCitas();
+  mostrarMensaje("🗑️ Cita eliminada.", "exito");
+  mostrarCitas();
+}

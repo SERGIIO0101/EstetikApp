@@ -10,10 +10,11 @@
 
   <!-- Estilos -->
   <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
 </head>
 <body>
 
-  <header class="encabezado">
+<header class="encabezado">
   <div class="logo-container">
     <img src="Image/logo-App.png" alt="Logo EstetikApp" class="logo-img">
   </div>
@@ -28,113 +29,168 @@
   </nav>
 </header>
 
-
-  <section id="pantalla-inicio" class="pantalla-inicio">
+<section id="pantalla-inicio" class="pantalla-inicio">
   <div class="contenido-inicio">
-    <!-- Swiper Carrusel -->
-<div class="swiper">
-  <div class="swiper-wrapper">
-    <div class="swiper-slide"><img src="Image/imagen-1.jpg" alt="Servicio 1"></div>
-    <div class="swiper-slide"><img src="Image/imagen-2.jpg" alt="Servicio 2"></div>
-    <div class="swiper-slide"><img src="Image/imagen-3.jpg" alt="Servicio 3"></div>
-  </div>
-
-  <!-- Flechas de navegación -->
-  <div class="swiper-button-next"></div>
-  <div class="swiper-button-prev"></div>
-
-  <!-- Paginación opcional -->
-  <div class="swiper-pagination"></div>
-</div>
+    <div class="swiper">
+      <div class="swiper-wrapper">
+        <div class="swiper-slide"><img src="Image/imagen-1.jpg" alt="Servicio 1"></div>
+        <div class="swiper-slide"><img src="Image/imagen-2.jpg" alt="Servicio 2"></div>
+        <div class="swiper-slide"><img src="Image/imagen-3.jpg" alt="Servicio 3"></div>
+      </div>
+      <div class="swiper-button-next"></div>
+      <div class="swiper-button-prev"></div>
+      <div class="swiper-pagination"></div>
+    </div>
     <h1>Bienvenida a EstetikApp</h1>
     <p>Tu belleza empieza con una buena cita</p>
     <button id="btnReservar" class="btn-principal">Reservar ahora</button>
   </div>
 </section>
 
-  <!-- Formulario -->
-  <section class="formulario-seccion">
-    <h2>Agendar una nueva cita</h2>
-    <form id="formulario" class="formulario">
-      <div class="campo">
-        <label for="nombre">Nombre del cliente</label>
-        <input type="text" id="nombre" placeholder="Ej. María Pérez" required />
-      </div>
+<section class="formulario-seccion">
+  <h2>Agendar una nueva cita</h2>
+  <form id="formulario" class="formulario">
+    <div class="campo">
+      <label for="nombre">Nombre del cliente</label>
+      <input type="text" id="nombre" placeholder="Ej. María Pérez" required />
+    </div>
 
-      <div class="campo">
-        <label for="servicio">Servicio</label>
-        <select id="servicio" required>
-          <option value="">Seleccionar</option>
-          <option value="Corte de cabello">Corte de cabello</option>
-          <option value="Uñas">Uñas</option>
-          <option value="Depilación">Depilación</option>
-          <option value="Maquillaje">Maquillaje</option>
-        </select>
-      </div>
+    <div class="campo">
+      <label for="servicio">Servicio</label>
+      <select id="servicio" required>
+        <option value="">Seleccionar</option>
+        <option value="Corte de cabello">Corte de cabello</option>
+        <option value="Uñas">Uñas</option>
+        <option value="Depilación">Depilación</option>
+        <option value="Maquillaje">Maquillaje</option>
+      </select>
+    </div>
 
-      <div class="campo">
-        <label for="fecha">Fecha</label>
-        <input type="date" id="fecha" required />
-      </div>
+    <div class="campo">
+      <label for="personal">Profesional</label>
+      <select id="personal" required>
+        <option value="">Seleccionar</option>
+        <option value="Laura Gómez">Laura Gómez</option>
+        <option value="Sofía Martínez">Sofía Martínez</option>
+        <option value="Carolina Ruiz">Carolina Ruiz</option>
+      </select>
+    </div>
 
-      <div class="campo">
-        <label for="hora">Hora</label>
-        <input type="time" id="hora" required />
-      </div>
+    <div class="campo">
+      <label for="fecha">Fecha</label>
+      <input type="date" id="fecha" required />
+    </div>
 
-      <button type="submit" class="btn-principal" id="btnSubmit">Agendar cita</button>
-    </form>
+    <div class="campo">
+      <label for="hora">Hora</label>
+      <input type="time" id="hora" required />
+    </div>
 
-    <p id="mensaje" class="mensaje oculto"></p>
-  </section>
+    <button type="submit" class="btn-principal" id="btnSubmit">Agendar cita</button>
+  </form>
 
-  <!-- Lista de citas -->
-  <section class="lista-citas">
-    <h2>Citas registradas</h2>
-    <div id="citas"></div>
-  </section>
+  <p id="mensaje" class="mensaje oculto"></p>
+</section>
 
-<!-- Sección de Ubicación -->
+<section class="lista-citas">
+  <h2>Citas registradas</h2>
+  <div id="citas"></div>
+</section>
+
+<section id="servicios" class="seccion-servicios">
+  <h2>Nuestros Servicios</h2>
+  <div class="grid-servicios">
+    <div class="servicio-card">
+      <img src="Image/servicio-uñas.png" alt="Uñas">
+      <h3>Uñas</h3>
+      <p>Manicure, pedicure y diseños personalizados.</p>
+      <button class="btn-principal reservar-btn">Reservar</button>
+    </div>
+
+    <div class="servicio-card">
+      <img src="Image/servicio-cabello.png" alt="Cabello">
+      <h3>Corte de Cabello</h3>
+      <p>Estilos modernos, tintes y tratamientos.</p>
+      <button class="btn-principal reservar-btn">Reservar</button>
+    </div>
+
+    <div class="servicio-card">
+      <img src="Image/servicio-depilacion.png" alt="Depilación">
+      <h3>Depilación</h3>
+      <p>Con cera o hilo, para una piel suave y limpia.</p>
+      <button class="btn-principal reservar-btn">Reservar</button>
+    </div>
+
+    <div class="servicio-card">
+      <img src="Image/servicio-maquillaje.png" alt="Maquillaje">
+      <h3>Maquillaje</h3>
+      <p>Eventos especiales, novias y más.</p>
+      <button class="btn-principal reservar-btn">Reservar</button>
+    </div>
+  </div>
+</section>
+
 <section id="ubicacion" class="seccion-ubicacion">
   <h2>¿Dónde nos encontramos?</h2>
-
   <div class="mapa">
     <iframe
       src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3976.8514379612046!2d-74.082!3d4.6097!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e3f99a5423fa6c3%3A0x2f47d4e89b88063a!2sBogotá%2C%20Colombia!5e0!3m2!1ses!2sco!4v1719876543210"
-      width="100%"
-      height="300"
-      style="border:0;"
-      allowfullscreen=""
-      loading="lazy"
-    ></iframe>
+      width="100%" height="300" style="border:0;" allowfullscreen="" loading="lazy">
+    </iframe>
   </div>
-
   <div class="info-contacto">
     <p><strong>Dirección:</strong> Calle 123 #45-67, Bogotá</p>
     <p><strong>Teléfono:</strong> 300 123 4567</p>
     <p><strong>WhatsApp:</strong> +57 300 123 4567</p>
     <p><strong>Email:</strong> contacto@estetikapp.com</p>
     <p><strong>Horario:</strong> Lunes a Sábado - 8:00 a.m. a 6:00 p.m.</p>
-
     <a href="https://wa.me/573001234567" target="_blank" class="btn-principal" style="margin-top: 20px;">
       Chatear por WhatsApp
     </a>
   </div>
 </section>
 
+<section id="personal" class="seccion-personal">
+  <h2>Nuestro Personal</h2>
+  <div class="grid-personal">
+    <div class="personal-card">
+      <img src="Image/personal-1.jpg" alt="Terapeuta 1">
+      <h3>Laura Gómez</h3>
+      <p>Especialista en Uñas & Maquillaje</p>
+      <button class="btn-principal reservar-btn">Reservar</button>
+    </div>
+    <div class="personal-card">
+      <img src="Image/personal-2.jpg" alt="Terapeuta 2">
+      <h3>Sofía Martínez</h3>
+      <p>Especialista en Depilación & Cuidado facial</p>
+      <button class="btn-principal reservar-btn">Reservar</button>
+    </div>
+    <div class="personal-card">
+      <img src="Image/personal-3.jpg" alt="Terapeuta 3">
+      <h3>Carolina Ruiz</h3>
+      <p>Experta en Corte de Cabello</p>
+      <button class="btn-principal reservar-btn">Reservar</button>
+    </div>
+  </div>
+</section>
+
+<!-- Modal de Confirmación -->
+<div id="modalConfirmacion" class="modal oculto">
+  <div class="modal-contenido">
+    <h2>Cita Confirmada</h2>
+    <p id="detalleCita"></p>
+    <button class="btn-principal" id="btnCerrarModal">Cerrar</button>
+  </div>
+</div>
 
 
-  <footer>
-    <p>Hecho con 💖 por Sergio Severiche</p>
-  </footer>
+<footer>
+  <p>Hecho con 💖 por Sergio Severiche</p>
+</footer>
 
-  <!-- JavaScript -->
-  <script src="app.js"></script>
-  <!-- Swiper CSS -->
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
-
-<!-- Swiper JS -->
+<!-- Scripts -->
 <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+<script src="app.js"></script>
 <script>
   const swiper = new Swiper('.swiper', {
     loop: true,

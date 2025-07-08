@@ -1,11 +1,11 @@
-// Obtener el contenedor de citas y el formulario
+// Variables globales
 const formulario = document.getElementById('formulario');
 const contenedorCitas = document.getElementById('citas');
 const btnSubmit = document.getElementById('btnSubmit');
 let citas = JSON.parse(localStorage.getItem('citas')) || [];
 let editandoIndex = null;
 
-// Función reutilizable para mostrar mensajes (error o éxito)
+// Función para mostrar mensajes temporales
 function mostrarMensaje(texto, tipo = "error") {
   const mensaje = document.getElementById('mensaje');
   mensaje.textContent = texto;
@@ -18,68 +18,7 @@ function mostrarMensaje(texto, tipo = "error") {
   }, 4000);
 }
 
-// Mostrar citas al cargar
-document.addEventListener('DOMContentLoaded', () => {
-  document.querySelector('.formulario-seccion').style.display = 'none';
-  document.querySelector('.lista-citas').style.display = 'none';
-  mostrarCitas();
-});
-
-// Mostrar la app después de hacer clic en "Reservar ahora"
-document.getElementById('btnReservar').addEventListener('click', () => {
-  document.getElementById('pantalla-inicio').style.display = 'none';
-  document.querySelector('.formulario-seccion').style.display = 'block';
-  document.querySelector('.lista-citas').style.display = 'block';
-});
-
-// Toggle menú hamburguesa
-document.getElementById('menu-toggle').addEventListener('click', () => {
-  document.querySelector('.menu-principal ul').classList.toggle('activo');
-});
-
-// Evento al enviar el formulario
-formulario.addEventListener('submit', function (e) {
-  e.preventDefault();
-
-  const nombre = document.getElementById('nombre').value.trim();
-  const servicio = document.getElementById('servicio').value;
-  const fecha = document.getElementById('fecha').value;
-  const hora = document.getElementById('hora').value;
-
-  if (!nombre || !servicio || !fecha || !hora) {
-    mostrarMensaje("Todos los campos son obligatorios.", "error");
-    return;
-  }
-
-  const citaDuplicada = citas.find((cita, i) =>
-    i !== editandoIndex && cita.fecha === fecha && cita.hora === hora
-  );
-
-  if (citaDuplicada) {
-    mostrarMensaje("Ya hay una cita registrada para esa fecha y hora.", "error");
-    return;
-  }
-
-  const nuevaCita = { nombre, servicio, fecha, hora };
-
-  if (editandoIndex !== null) {
-    citas[editandoIndex] = nuevaCita;
-    mostrarMensaje("Cita actualizada exitosamente.", "exito");
-    editandoIndex = null;
-    btnSubmit.textContent = 'Agendar cita';
-    const cancelarBtn = document.getElementById('cancelarEdicion');
-    if (cancelarBtn) cancelarBtn.remove();
-  } else {
-    citas.push(nuevaCita);
-    mostrarMensaje("Cita agendada exitosamente.", "exito");
-  }
-
-  localStorage.setItem('citas', JSON.stringify(citas));
-  formulario.reset();
-  mostrarCitas();
-});
-
-// Mostrar las citas en pantalla
+// Mostrar citas en pantalla
 function mostrarCitas() {
   contenedorCitas.innerHTML = '';
 
@@ -99,6 +38,7 @@ function mostrarCitas() {
       <p><strong>Servicio:</strong> ${cita.servicio}</p>
       <p><strong>Fecha:</strong> ${cita.fecha}</p>
       <p><strong>Hora:</strong> ${cita.hora}</p>
+      <p><strong>Profesional:</strong> ${cita.personal}</p>
     `;
 
     const acciones = document.createElement('div');
@@ -140,6 +80,7 @@ function editarCita(index) {
   document.getElementById('servicio').value = cita.servicio;
   document.getElementById('fecha').value = cita.fecha;
   document.getElementById('hora').value = cita.hora;
+  document.getElementById('personal').value = cita.personal;
   editandoIndex = index;
   btnSubmit.textContent = 'Actualizar cita';
 
@@ -162,3 +103,118 @@ function editarCita(index) {
     formulario.appendChild(cancelarBtn);
   }
 }
+
+// Esperar a que el DOM esté cargado
+document.addEventListener('DOMContentLoaded', () => {
+  // Ocultar secciones al iniciar
+  document.querySelector('.formulario-seccion').style.display = 'none';
+  document.querySelector('.lista-citas').style.display = 'none';
+
+  // Mostrar citas si existen
+  mostrarCitas();
+
+  // Cerrar modal
+  const cerrarModal = document.getElementById('btnCerrarModal');
+  if (cerrarModal) {
+    cerrarModal.addEventListener('click', () => {
+      document.getElementById('modalConfirmacion').classList.add('oculto');
+    });
+  }
+
+  // Toggle menú hamburguesa
+  document.getElementById('menu-toggle').addEventListener('click', () => {
+    document.querySelector('.menu-principal ul').classList.toggle('activo');
+  });
+
+  // Botón "Reservar ahora" (inicio)
+  document.getElementById('btnReservar').addEventListener('click', () => {
+    document.getElementById('pantalla-inicio').style.display = 'none';
+    document.querySelector('.formulario-seccion').style.display = 'block';
+    document.querySelector('.lista-citas').style.display = 'block';
+  });
+
+  // Botones "Reservar" desde tarjetas de servicios
+  document.querySelectorAll('.reservar-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.getElementById('pantalla-inicio').style.display = 'none';
+      document.querySelector('.formulario-seccion').style.display = 'block';
+      document.querySelector('.lista-citas').style.display = 'block';
+      document.getElementById('formulario').scrollIntoView({ behavior: 'smooth' });
+    });
+  });
+
+  // Botones "Reservar" desde personal
+  document.querySelectorAll('.personal-card .reservar-btn').forEach(btn => {
+    btn.addEventListener('click', e => {
+      const card = e.target.closest('.personal-card');
+      const nombre = card.querySelector('h3').textContent;
+      document.getElementById('personal').value = nombre;
+
+      document.getElementById('pantalla-inicio').style.display = 'none';
+      document.querySelector('.formulario-seccion').style.display = 'block';
+      document.querySelector('.lista-citas').style.display = 'block';
+      document.getElementById('formulario').scrollIntoView({ behavior: 'smooth' });
+    });
+  });
+});
+
+// Evento al enviar el formulario
+formulario.addEventListener('submit', function (e) {
+  e.preventDefault();
+
+  const nombre = document.getElementById('nombre').value.trim();
+  const servicio = document.getElementById('servicio').value;
+  const fecha = document.getElementById('fecha').value;
+  const hora = document.getElementById('hora').value;
+  const personal = document.getElementById('personal').value;
+
+  if (!nombre || !servicio || !fecha || !hora || !personal) {
+    mostrarMensaje("Todos los campos son obligatorios.", "error");
+    return;
+  }
+
+  const citaDuplicada = citas.find((cita, i) =>
+    i !== editandoIndex && cita.fecha === fecha && cita.hora === hora
+  );
+
+  if (citaDuplicada) {
+    mostrarMensaje("Ya hay una cita registrada para esa fecha y hora.", "error");
+    return;
+  }
+
+  const nuevaCita = { nombre, servicio, fecha, hora, personal };
+
+  if (editandoIndex !== null) {
+    citas[editandoIndex] = nuevaCita;
+    mostrarMensaje("Cita actualizada exitosamente.", "exito");
+    editandoIndex = null;
+    btnSubmit.textContent = 'Agendar cita';
+    const cancelarBtn = document.getElementById('cancelarEdicion');
+    if (cancelarBtn) cancelarBtn.remove();
+  } else {
+    citas.push(nuevaCita);
+    const detalle = `
+      <strong>Cliente:</strong> ${nombre}<br>
+      <strong>Servicio:</strong> ${servicio}<br>
+      <strong>Profesional:</strong> ${personal}<br>
+      <strong>Fecha:</strong> ${fecha}<br>
+      <strong>Hora:</strong> ${hora}
+    `;
+    document.getElementById('detalleCita').innerHTML = detalle;
+    document.getElementById('modalConfirmacion').classList.remove('oculto');
+  }
+
+  localStorage.setItem('citas', JSON.stringify(citas));
+  formulario.reset();
+  mostrarCitas();
+});
+
+document.getElementById('btnCerrarModal').addEventListener('click', () => {
+  document.getElementById('modalConfirmacion').classList.add('oculto');
+});
+
+// Forzar que el modal esté oculto al cargar la página
+window.addEventListener('DOMContentLoaded', () => {
+  document.getElementById('modalConfirmacion').classList.add('oculto');
+});
+

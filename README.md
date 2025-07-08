@@ -4,7 +4,7 @@ EstetikApp es una aplicación web sencilla desarrollada con tecnologías fronten
 
 ## Captura de pantalla
 
-![Interfaz de EstetikApp](./Image/Captura.png)
+![Interfaz de EstetikApp](./captura.png)
 
 ## Tecnologías utilizadas
 
@@ -14,17 +14,15 @@ EstetikApp es una aplicación web sencilla desarrollada con tecnologías fronten
 
 ## Estructura del proyecto
 
+```
 EstetikApp/
 │
-├── index.html # Interfaz principal
-├── style.css # Estilos personalizados
-├── app.js # Lógica de validación, guardado y visualización
-├── README.md # Este archivo
-└── Image/Captura.png # Captura de pantalla
-
-markdown
-Copiar
-Editar
+├── index.html         # Interfaz principal
+├── style.css          # Estilos personalizados
+├── app.js             # Lógica de validación, guardado y visualización
+├── README.md          # Este archivo
+└── captura.png        # Captura de pantalla
+```
 
 ## Funcionalidades actuales
 
@@ -50,19 +48,15 @@ Editar
 
 ```bash
 git clone https://github.com/SERGIIO0101/EstetikApp.git
-Abre la carpeta del proyecto en VS Code o tu editor favorito.
+```
 
-Ejecuta el archivo index.html en un navegador moderno.
+2. Abre la carpeta del proyecto en VS Code o tu editor favorito.
+
+3. Ejecuta el archivo `index.html` en un navegador moderno.
 
 No requiere instalación adicional ni servidor para esta versión local.
 
-Autor
-Sergio Severiche
-GitHub – SERGIIO0101
+## Autor
 
-yaml
-Copiar
-Editar
-
-
-```bash
+**Sergio Severiche**  
+[GitHub – SERGIIO0101](https://github.com/SERGIIO0101)

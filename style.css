@@ -1,0 +1,105 @@
+/* ===== Reset general ===== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* ===== Estilo del cuerpo de la página ===== */
+body {
+  font-family: 'Segoe UI', sans-serif;
+  background-color: #f7f7f7;
+  color: #333;
+  padding: 20px;
+}
+
+/* ===== Contenedor principal ===== */
+.container {
+  max-width: 600px;
+  margin: 0 auto;
+  background-color: #fff;
+  padding: 25px;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* ===== Títulos principales ===== */
+h1, h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #2c3e50;
+}
+
+/* ===== Formulario ===== */
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* ===== Inputs y botón principal ===== */
+input, button {
+  padding: 10px;
+  font-size: 1rem;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+button {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+/* ===== Lista de citas agendadas ===== */
+#lista-citas {
+  list-style: none;
+  margin-top: 20px;
+}
+
+#lista-citas li {
+  background-color: #e9ecef;
+  padding: 12px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* ===== Botón de eliminar ===== */
+#lista-citas button {
+  background-color: #dc3545;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 5px;
+  color: white;
+  cursor: pointer;
+}
+
+#lista-citas button:hover {
+  background-color: #c82333;
+}
+
+/* ===== Responsive para pantallas pequeñas ===== */
+@media (max-width: 600px) {
+  .container {
+    padding: 15px;
+  }
+
+  input, button {
+    font-size: 0.95rem;
+  }
+}
+select {
+  padding: 10px;
+  font-size: 1rem;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}

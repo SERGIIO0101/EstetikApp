@@ -2,7 +2,7 @@
 body {
   background-color: #ffe3e8;
   font-family: 'Lato', sans-serif;
-  color: #333333;
+  color: #333;
   margin: 0;
   padding: 20px;
 }
@@ -14,58 +14,178 @@ h1, h2, h3 {
 }
 
 /* ===== Encabezado ===== */
-header {
+.encabezado {
+  background-color: #fff;
+  padding: 10px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 2px solid #ff5c8d;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.logo-container {
+  display: flex;
+  align-items: center;
+}
+
+.logo-img {
+  height: 50px;
+  width: auto;
+}
+
+.menu-toggle {
+  font-size: 28px;
+  cursor: pointer;
+  color: #ff5c8d;
+  z-index: 2100;
+  position: relative;
+}
+
+/* ===== Menú lateral ===== */
+.menu-principal {
+  position: relative;
+}
+
+.menu-principal ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  position: fixed;
+  top: 0;
+  right: -260px;
+  width: 240px;
+  height: 100vh;
+  background-color: #fff;
+  box-shadow: -2px 0 10px rgba(0, 0, 0, 0.1);
+  padding-top: 80px;
+  transition: right 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  z-index: 2000;
+}
+
+.menu-principal ul.activo {
+  right: 0;
+}
+
+.menu-principal a {
+  color: #333;
+  text-decoration: none;
+  font-size: 18px;
+  padding: 10px 20px;
+  display: block;
+  transition: background-color 0.2s ease;
+}
+
+.menu-principal a:hover {
+  background-color: #fcdde4;
+}
+
+/* ===== Pantalla de inicio ===== */
+.pantalla-inicio {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 80vh;
+  background-color: #fcdde4;
   text-align: center;
+  padding: 40px 20px;
+  border-radius: 12px;
   margin-bottom: 30px;
 }
 
-header h1 {
+.contenido-inicio h1 {
   font-size: 36px;
-  margin-bottom: 5px;
+  color: #ff5c8d;
+  margin-bottom: 15px;
 }
 
-header p {
+.contenido-inicio p {
+  font-size: 18px;
+  color: #333;
+  margin-bottom: 30px;
+}
+
+#btnReservar {
+  background-color: #ff5c8d;
+  color: #fff;
+  padding: 14px 28px;
   font-size: 16px;
-  color: #333333;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+#btnReservar:hover {
+  background-color: #f56aa8;
+}
+
+/* ===== Swiper ===== */
+.swiper {
+  width: 100%;
+  max-width: 600px;
+  height: 300px;
+  margin: 0 auto 30px;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.swiper-slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.swiper-button-next,
+.swiper-button-prev {
+  color: #ff5c8d;
+}
+
+.swiper-pagination-bullet {
+  background-color: #ff5c8d;
 }
 
 /* ===== Formulario ===== */
 .formulario-seccion {
   max-width: 600px;
-  margin: 0 auto 30px;
-  background-color: #ffffff;
-  padding: 30px;
-  border-radius: 12px;
-  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.05);
-}
-
-.formulario {
-  display: flex;
-  flex-direction: column;
+  margin: 0 auto 40px;
+  background-color: #fff;
+  padding: 40px 30px;
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(255, 92, 141, 0.1);
 }
 
 .campo {
-  display: flex;
-  flex-direction: column;
-  margin-bottom: 18px;
-}
-
-.campo label {
-  margin-bottom: 6px;
-  font-weight: bold;
+  margin-bottom: 20px;
 }
 
 .campo input,
 .campo select {
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 8px;
+  width: 100%;
+  padding: 12px;
+  border: 2px solid #eee;
+  border-radius: 10px;
   font-size: 15px;
+  transition: border-color 0.3s, box-shadow 0.3s;
 }
 
+.campo input:focus,
+.campo select:focus {
+  border-color: #ff5c8d;
+  box-shadow: 0 0 5px rgba(255, 92, 141, 0.3);
+  outline: none;
+}
+
+/* ===== Botones ===== */
 .btn-principal {
   background-color: #ff5c8d;
-  color: #ffffff;
+  color: #fff;
   padding: 12px 20px;
   font-size: 16px;
   font-weight: bold;
@@ -99,7 +219,7 @@ header p {
   display: none;
 }
 
-/* ===== Lista de citas ===== */
+/* ===== Lista de Citas ===== */
 .lista-citas {
   max-width: 800px;
   margin: 0 auto 40px;
@@ -110,25 +230,22 @@ header p {
 }
 
 .cita-card {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  background-color: #ffffff;
+  background-color: #fff;
   border-left: 5px solid #ff5c8d;
-  padding: 16px 20px;
-  margin-bottom: 15px;
-  border-radius: 10px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.07);
-  transition: transform 0.2s ease;
+  padding: 20px 24px;
+  margin-bottom: 20px;
+  border-radius: 14px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.04);
+  transition: transform 0.3s, box-shadow 0.3s;
 }
 
 .cita-card:hover {
-  transform: scale(1.01);
+  transform: translateY(-3px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.06);
 }
 
 .cita-info h3 {
   margin: 0 0 8px;
-  color: #333;
 }
 
 .cita-info p {
@@ -138,12 +255,12 @@ header p {
 
 .cita-acciones {
   display: flex;
-  flex-direction: column;
   gap: 10px;
+  margin-top: 10px;
 }
 
 .cita-acciones button {
-  font-size: 18px;
+  font-size: 16px;
   background: transparent;
   border: none;
   cursor: pointer;
@@ -162,232 +279,9 @@ header p {
   color: #2c3e50;
 }
 
-/* ===== Footer ===== */
-footer {
-  text-align: center;
-  padding: 20px 0;
-  font-size: 14px;
-  color: #333333;
-}
-
-.pantalla-inicio {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  min-height: 80vh;
-  background-color: #fcdde4;
-  text-align: center;
-  padding: 40px 20px;
-  border-radius: 12px;
-  margin-bottom: 30px;
-}
-
-.contenido-inicio h1 {
-  font-family: 'Playfair Display', serif;
-  font-size: 36px;
-  color: #ff5c8d;
-  margin-bottom: 15px;
-}
-
-.contenido-inicio p {
-  font-size: 18px;
-  color: #333333;
-  margin-bottom: 30px;
-}
-
-#btnReservar {
-  background-color: #ff5c8d;
-  color: #ffffff;
-  padding: 14px 28px;
-  font-size: 16px;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
-#btnReservar:hover {
-  background-color: #f56aa8;
-}
-
-/* === Swiper Carrusel === */
-.swiper {
-  width: 100%;
-  max-width: 600px;
-  height: 300px;
-  margin: 0 auto 30px;
-  border-radius: 12px;
-  overflow: hidden;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-}
-
-.swiper-slide img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-.swiper-button-next,
-.swiper-button-prev {
-  color: #ff5c8d;
-}
-
-.swiper-pagination-bullet {
-  background-color: #ff5c8d;
-}
-
-/* === ENCABEZADO === */
-.encabezado {
-  background-color: #ffffff;
-  padding: 10px 20px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  border-bottom: 2px solid #ff5c8d;
-  position: sticky;
-  top: 0;
-  z-index: 1000;
-}
-
-.logo-container {
-  display: flex;
-  align-items: center;
-}
-
-.logo-img {
-  height: 50px;
-  width: auto;
-}
-
-/* Menú */
-.menu-principal {
-  position: relative;
-}
-
-.menu-principal ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  position: fixed;
-  top: 0;
-  right: -260px;
-  width: 240px;
-  height: 100vh;
-  background-color: #fff;
-  box-shadow: -2px 0 10px rgba(0, 0, 0, 0.1);
-  padding-top: 80px;
-  transition: right 0.3s ease;
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-  z-index: 2000;
-}
-
-.menu-principal ul.activo {
-  right: 0;
-}
-
-.menu-principal a {
-  color: #333333;
-  text-decoration: none;
-  font-size: 18px;
-  padding: 10px 20px;
-  display: block;
-  transition: background-color 0.2s ease;
-}
-
-.menu-principal a:hover {
-  background-color: #fcdde4;
-}
-
-.menu-toggle {
-  font-size: 28px;
-  cursor: pointer;
-  color: #ff5c8d;
-  z-index: 2100;
-  position: relative;
-}
-
-/* Responsive */
-@media (max-width: 768px) {
-  .menu-principal ul {
-    display: none;
-    flex-direction: column;
-    background-color: #fff;
-    position: absolute;
-    top: 70px;
-    right: 20px;
-    padding: 15px 20px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    border-radius: 12px;
-  }
-
-  .menu-principal ul.activo {
-    display: flex;
-  }
-
-  .menu-toggle {
-    display: block;
-  }
-}
-
-.icon-trash,
-.icon-edit {
-  width: 20px;
-  height: 20px;
-  cursor: pointer;
-  transition: transform 0.2s ease;
-}
-
-.icon-trash {
-  color: #e74c3c;
-}
-
-.icon-edit {
-  color: #2c3e50;
-}
-
-.icon-trash:hover,
-.icon-edit:hover {
-  transform: scale(1.2);
-}
-
-.btn-editar {
-  color: #2c3e50;
-}
 .cita-card.editando {
-  border-left: 5px solid #009640 !important;
+  border-left: 5px solid #009640;
   background-color: #e6f4ea;
-}
-
-/* ===== Sección Ubicación ===== */
-.seccion-ubicacion {
-  max-width: 800px;
-  margin: 0 auto 50px;
-  background-color: #ffffff;
-  padding: 30px;
-  border-radius: 12px;
-  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.05);
-  text-align: center;
-}
-
-.seccion-ubicacion h2 {
-  font-size: 28px;
-  color: #ff5c8d;
-  margin-bottom: 20px;
-}
-
-.mapa {
-  margin-bottom: 20px;
-  border-radius: 12px;
-  overflow: hidden;
-}
-
-.info-contacto p {
-  margin: 8px 0;
-  font-size: 16px;
-  color: #333333;
 }
 
 /* ===== Sección Servicios ===== */
@@ -401,12 +295,6 @@ footer {
   margin-left: auto;
   margin-right: auto;
   box-shadow: 0 2px 12px rgba(0, 0, 0, 0.04);
-}
-
-.seccion-servicios h2 {
-  font-size: 28px;
-  color: #ff5c8d;
-  margin-bottom: 30px;
 }
 
 .grid-servicios {
@@ -435,21 +323,10 @@ footer {
   margin-bottom: 15px;
 }
 
-.servicio-card h3 {
-  margin: 10px 0 5px;
-  color: #333;
-}
-
-.servicio-card p {
-  font-size: 14px;
-  color: #555;
-  margin-bottom: 15px;
-}
-
-/* ==== Sección Personal ==== */
+/* ===== Sección Personal ===== */
 .seccion-personal {
   padding: 40px 20px;
-  background-color: #ffffff;
+  background-color: #fff;
   text-align: center;
 }
 
@@ -480,19 +357,24 @@ footer {
   margin-bottom: 15px;
 }
 
-.personal-card h3 {
-  margin-bottom: 6px;
-  font-size: 18px;
-  color: #ff5c8d;
+/* ===== Sección Ubicación ===== */
+.seccion-ubicacion {
+  max-width: 800px;
+  margin: 0 auto 50px;
+  background-color: #fff;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.05);
+  text-align: center;
 }
 
-.personal-card p {
-  font-size: 14px;
-  color: #555;
-  margin-bottom: 15px;
+.mapa {
+  margin-bottom: 20px;
+  border-radius: 12px;
+  overflow: hidden;
 }
 
-/* ===== Modal de Confirmación ===== */
+/* ===== Modal ===== */
 .modal {
   position: fixed;
   top: 0;
@@ -514,8 +396,38 @@ footer {
   max-width: 500px;
   width: 90%;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  animation: fadeIn 0.3s ease-in-out;
 }
 
-.oculto {
-  display: none;
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* ===== Footer ===== */
+footer {
+  text-align: center;
+  padding: 20px;
+  font-size: 14px;
+  color: #333;
+  border-top: 2px solid #ff5c8d;
+  margin-top: 40px;
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 768px) {
+  .menu-toggle {
+    display: block;
+  }
+
+  .menu-principal ul {
+    flex-direction: column;
+    padding-top: 80px;
+  }
 }

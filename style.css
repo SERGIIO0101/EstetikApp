@@ -1,136 +1,139 @@
-/* ===== Tipografías base ===== */
-body {
-  background-color: #ffe3e8;
-  font-family: 'Lato', sans-serif;
-  color: #333;
-  margin: 0;
-  padding: 20px;
+/* ===== Colores principales ===== */
+:root {
+  --crema: #fff3e9;
+  --piel-suave: #f5d6c6;
+  --piel-oscura: #e3b7a0;
+  --texto: #5a4b41;
+  --primario: #d88b6c;
+  --blanco: #ffffff;
 }
 
-h1, h2, h3 {
-  font-family: 'Playfair Display', serif;
-  color: #ff5c8d;
-  margin-bottom: 10px;
+/* ===== Reset general ===== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: var(--crema);
+  font-family: 'Lato', sans-serif;
+  color: var(--texto);
+  line-height: 1.6;
 }
 
 /* ===== Encabezado ===== */
 .encabezado {
-  background-color: #fff;
+  background-color: var(--blanco);
   padding: 10px 20px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border-bottom: 2px solid #ff5c8d;
+  border-bottom: 2px solid var(--piel-oscura);
   position: sticky;
   top: 0;
   z-index: 1000;
 }
 
-.logo-container {
-  display: flex;
-  align-items: center;
-}
-
 .logo-img {
   height: 50px;
-  width: auto;
 }
 
 .menu-toggle {
   font-size: 28px;
   cursor: pointer;
-  color: #ff5c8d;
-  z-index: 2100;
-  position: relative;
+  color: var(--primario);
+  display: none;
 }
 
 /* ===== Menú lateral ===== */
-.menu-principal {
-  position: relative;
-}
-
 .menu-principal ul {
   list-style: none;
-  margin: 0;
-  padding: 0;
-  position: fixed;
-  top: 0;
-  right: -260px;
-  width: 240px;
-  height: 100vh;
-  background-color: #fff;
-  box-shadow: -2px 0 10px rgba(0, 0, 0, 0.1);
-  padding-top: 80px;
-  transition: right 0.3s ease;
   display: flex;
-  flex-direction: column;
   gap: 20px;
-  z-index: 2000;
-}
-
-.menu-principal ul.activo {
-  right: 0;
 }
 
 .menu-principal a {
-  color: #333;
   text-decoration: none;
-  font-size: 18px;
-  padding: 10px 20px;
-  display: block;
-  transition: background-color 0.2s ease;
+  color: var(--texto);
+  font-weight: bold;
+  padding: 10px;
+  transition: color 0.3s ease;
 }
 
 .menu-principal a:hover {
-  background-color: #fcdde4;
+  color: var(--primario);
+}
+
+/* Responsive: menú hamburguesa */
+@media (max-width: 768px) {
+  .menu-toggle {
+    display: block;
+  }
+
+  .menu-principal ul {
+    flex-direction: column;
+    position: fixed;
+    top: 0;
+    right: -250px;
+    width: 220px;
+    height: 100vh;
+    background: var(--blanco);
+    padding-top: 60px;
+    transition: right 0.3s ease;
+    box-shadow: -2px 0 10px rgba(0, 0, 0, 0.1);
+  }
+
+  .menu-principal ul.activo {
+    right: 0;
+  }
+
+  .menu-principal li {
+    margin-bottom: 20px;
+  }
 }
 
 /* ===== Pantalla de inicio ===== */
 .pantalla-inicio {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  min-height: 80vh;
-  background-color: #fcdde4;
-  text-align: center;
   padding: 40px 20px;
-  border-radius: 12px;
-  margin-bottom: 30px;
+  text-align: center;
+  background-color: var(--piel-suave);
 }
 
-.contenido-inicio h1 {
-  font-size: 36px;
-  color: #ff5c8d;
-  margin-bottom: 15px;
+.pantalla-inicio h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: 2.5rem;
+  color: var(--primario);
+  margin-top: 20px;
 }
 
-.contenido-inicio p {
-  font-size: 18px;
-  color: #333;
-  margin-bottom: 30px;
+.pantalla-inicio p {
+  font-size: 1.1rem;
+  color: var(--texto);
+  margin: 10px 0 30px;
 }
 
-#btnReservar {
-  background-color: #ff5c8d;
-  color: #fff;
-  padding: 14px 28px;
-  font-size: 16px;
+.btn-principal {
+  background-color: var(--primario);
+  color: var(--blanco);
+  padding: 12px 24px;
   border: none;
-  border-radius: 8px;
+  border-radius: 10px;
+  font-size: 1rem;
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  transition: background-color 0.3s;
 }
 
-#btnReservar:hover {
-  background-color: #f56aa8;
+.btn-principal:hover {
+  background-color: var(--piel-oscura);
 }
 
-/* ===== Swiper ===== */
+/* ===== Swiper carrusel ===== */
 .swiper {
   width: 100%;
   max-width: 600px;
   height: 300px;
-  margin: 0 auto 30px;
+  margin: 0 auto 20px;
   border-radius: 12px;
   overflow: hidden;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
@@ -144,290 +147,253 @@ h1, h2, h3 {
 
 .swiper-button-next,
 .swiper-button-prev {
-  color: #ff5c8d;
+  color: var(--primario);
 }
 
 .swiper-pagination-bullet {
-  background-color: #ff5c8d;
+  background-color: var(--primario);
 }
 
-/* ===== Formulario ===== */
-.formulario-seccion {
-  max-width: 600px;
-  margin: 0 auto 40px;
-  background-color: #fff;
-  padding: 40px 30px;
-  border-radius: 16px;
-  box-shadow: 0 10px 30px rgba(255, 92, 141, 0.1);
-}
-
-.campo {
-  margin-bottom: 20px;
-}
-
-.campo input,
-.campo select {
-  width: 100%;
-  padding: 12px;
-  border: 2px solid #eee;
-  border-radius: 10px;
-  font-size: 15px;
-  transition: border-color 0.3s, box-shadow 0.3s;
-}
-
-.campo input:focus,
-.campo select:focus {
-  border-color: #ff5c8d;
-  box-shadow: 0 0 5px rgba(255, 92, 141, 0.3);
-  outline: none;
-}
-
-/* ===== Botones ===== */
-.btn-principal {
-  background-color: #ff5c8d;
-  color: #fff;
-  padding: 12px 20px;
-  font-size: 16px;
-  font-weight: bold;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-  margin-top: 10px;
-}
-
-.btn-principal:hover {
-  background-color: #f56aa8;
-}
-
-/* ===== Mensajes ===== */
-.mensaje {
-  margin-top: 15px;
-  font-weight: bold;
-  text-align: center;
-}
-
-.mensaje.exito {
-  color: #009640;
-}
-
-.mensaje.error {
-  color: #e74c3c;
-}
-
-.oculto {
-  display: none;
-}
-
-/* ===== Lista de Citas ===== */
-.lista-citas {
-  max-width: 800px;
-  margin: 0 auto 40px;
-}
-
-#citas {
-  margin-top: 20px;
-}
-
-.cita-card {
-  background-color: #fff;
-  border-left: 5px solid #ff5c8d;
-  padding: 20px 24px;
-  margin-bottom: 20px;
-  border-radius: 14px;
-  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.04);
-  transition: transform 0.3s, box-shadow 0.3s;
-}
-
-.cita-card:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.06);
-}
-
-.cita-info h3 {
-  margin: 0 0 8px;
-}
-
-.cita-info p {
-  margin: 4px 0;
-  color: #555;
-}
-
-.cita-acciones {
-  display: flex;
-  gap: 10px;
-  margin-top: 10px;
-}
-
-.cita-acciones button {
-  font-size: 16px;
-  background: transparent;
-  border: none;
-  cursor: pointer;
-  transition: transform 0.2s ease;
-}
-
-.cita-acciones button:hover {
-  transform: scale(1.2);
-}
-
-.btn-eliminar {
-  color: #e74c3c;
-}
-
-.btn-editar {
-  color: #2c3e50;
-}
-
-.cita-card.editando {
-  border-left: 5px solid #009640;
-  background-color: #e6f4ea;
-}
-
-/* ===== Sección Servicios ===== */
-.seccion-servicios {
+/* ===== Sección reservas (vacía al inicio) ===== */
+.seccion-reservas {
   padding: 40px 20px;
-  background-color: #fff;
+  background-color: var(--crema);
   text-align: center;
-  border-radius: 12px;
-  margin-bottom: 40px;
-  max-width: 1100px;
-  margin-left: auto;
-  margin-right: auto;
-  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.04);
 }
 
-.grid-servicios {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-  gap: 30px;
-}
-
-.servicio-card {
-  background-color: #ffe3e8;
-  padding: 20px;
-  border-radius: 12px;
-  text-align: center;
-  transition: transform 0.3s ease;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
-}
-
-.servicio-card:hover {
-  transform: scale(1.03);
-}
-
-.servicio-card img {
-  width: 100px;
-  height: 100px;
-  object-fit: contain;
-  margin-bottom: 15px;
-}
-
-/* ===== Sección Personal ===== */
+/* ===== Sección personal ===== */
 .seccion-personal {
   padding: 40px 20px;
-  background-color: #fff;
+  background-color: var(--blanco);
   text-align: center;
 }
 
-.grid-personal {
-  display: grid;
-  gap: 20px;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-  margin-top: 30px;
-}
-
-.personal-card {
-  background-color: #fcdde4;
-  border-radius: 12px;
-  padding: 20px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
-  transition: transform 0.2s ease;
-}
-
-.personal-card:hover {
-  transform: translateY(-5px);
-}
-
-.personal-card img {
-  width: 100%;
-  height: 240px;
-  object-fit: cover;
-  border-radius: 10px;
-  margin-bottom: 15px;
-}
-
-/* ===== Sección Ubicación ===== */
+/* ===== Sección ubicación ===== */
 .seccion-ubicacion {
-  max-width: 800px;
-  margin: 0 auto 50px;
-  background-color: #fff;
-  padding: 30px;
-  border-radius: 12px;
-  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.05);
+  padding: 40px 20px;
+  background-color: var(--piel-suave);
   text-align: center;
 }
 
-.mapa {
+.seccion-ubicacion iframe {
+  border-radius: 12px;
   margin-bottom: 20px;
-  border-radius: 12px;
-  overflow: hidden;
-}
-
-/* ===== Modal ===== */
-.modal {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.4);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 2000;
-}
-
-.modal-contenido {
-  background-color: #fff;
-  padding: 30px 40px;
-  border-radius: 12px;
-  text-align: center;
-  max-width: 500px;
-  width: 90%;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-  animation: fadeIn 0.3s ease-in-out;
-}
-
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: scale(0.95);
-  }
-  to {
-    opacity: 1;
-    transform: scale(1);
-  }
 }
 
 /* ===== Footer ===== */
 footer {
   text-align: center;
   padding: 20px;
-  font-size: 14px;
-  color: #333;
-  border-top: 2px solid #ff5c8d;
+  background-color: var(--blanco);
+  font-size: 0.9rem;
+  color: var(--texto);
+  border-top: 1px solid var(--piel-oscura);
   margin-top: 40px;
 }
 
-/* ===== Responsive ===== */
-@media (max-width: 768px) {
-  .menu-toggle {
-    display: block;
-  }
+.seccion-reservar {
+  background-color: #fff7f1;
+  padding: 40px 30px;
+  border-radius: 16px;
+  max-width: 600px;
+  margin: 40px auto;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.05);
+}
 
-  .menu-principal ul {
-    flex-direction: column;
-    padding-top: 80px;
+.seccion-reservar h2 {
+  text-align: center;
+  margin-bottom: 30px;
+  color: #c78f72;
+}
+
+.formulario-cita .campo {
+  margin-bottom: 20px;
+}
+
+.formulario-cita label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: bold;
+  color: #8b5e3c;
+}
+
+.formulario-cita input,
+.formulario-cita select {
+  width: 100%;
+  padding: 12px;
+  font-size: 16px;
+  border: 1px solid #e2cfc3;
+  border-radius: 10px;
+  background-color: #fffdfc;
+}
+
+.formulario-cita input:focus,
+.formulario-cita select:focus {
+  border-color: #c78f72;
+  outline: none;
+  box-shadow: 0 0 5px rgba(199, 143, 114, 0.3);
+}
+
+.mensaje {
+  margin-top: 15px;
+  text-align: center;
+  font-weight: bold;
+}
+
+.mensaje.error {
+  color: #c0392b;
+}
+
+.mensaje.exito {
+  color: #27ae60;
+}
+
+/* ==== Validación de errores ==== */
+.input-error {
+  border-color: #c0392b;    /* Rojo de error */
+}
+
+.error-message {
+  color: #c0392b;            /* Mismo rojo para el texto */
+  font-size: 0.875rem;       /* Texto ligeramente más pequeño */
+  margin-top: 5px;           /* Separación del input */
+  font-style: italic;        /* Opción de estilo para diferenciar */
+}
+
+/* === Stepper === */
+.stepper {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 30px;
+}
+.step {
+  text-align: center;
+  flex: 1;
+  position: relative;
+}
+.step .circle {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: #e2cfc3;
+  margin: 0 auto;
+  line-height: 30px;
+  font-weight: bold;
+}
+.step.active .circle,
+.step.completed .circle {
+  background: var(--primario);
+  color: var(--blanco);
+}
+.step::after {
+  content: '';
+  position: absolute;
+  top: 15px;
+  right: -50%;
+  width: 100%;
+  height: 4px;
+  background: #e2cfc3;
+  z-index: -1;
+}
+.step.completed::after {
+  background: var(--primario);
+}
+.step:last-child::after {
+  display: none;
+}
+.step .label {
+  margin-top: 8px;
+  font-size: 0.9rem;
+}
+
+/* === Fieldsets === */
+.form-step {
+  display: none;
+}
+.form-step--active {
+  display: block;
+}
+
+/* === Botones secundarios === */
+.btn-secondary {
+  background: transparent;
+  border: 2px solid var(--primario);
+  color: var(--primario);
+  padding: 10px 20px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  font-size: 0.9rem;
+}
+.btn-secondary:hover {
+  background: var(--primario);
+  color: var(--blanco);
+}
+.buttons {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+/* === Estilos Resumen de Cita === */
+.resumen-cita {
+  background: var(--blanco);
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+  margin-bottom: 20px;
+}
+.resumen-cita h3 {
+  margin-bottom: 10px;
+  color: var(--primario);
+}
+.resumen-cita ul {
+  list-style: none;
+  padding: 0;
+}
+.resumen-cita li {
+  margin-bottom: 6px;
+  font-size: 0.95rem;
+}
+
+.flatpickr-calendar {
+  background: var(--blanco);
+  border: 1px solid var(--piel-oscura);
+  border-radius: 10px;
+}
+.flatpickr-day.selected {
+  background: var(--primario);
+  color: var(--blanco);
+}
+
+#fecha {
+  background: url('assets/icono-calendario.svg') no-repeat 95% center;
+  padding-right: 40px;
+}
+#hora {
+  background: url('assets/icono-reloj.svg') no-repeat 95% center;
+  padding-right: 40px;
+}
+
+/* ==== Efecto brillante en el cursor ==== */
+.sparkle {
+  position: fixed;
+  pointer-events: none;
+  width: 6px;
+  height: 6px;
+  background: radial-gradient(circle at center, var(--primario) 0%, rgba(0,0,0,0) 70%);
+  border-radius: 50%;
+  opacity: 0.8;
+  animation: sparkle-fade 0.6s ease-out forwards;
+}
+
+@keyframes sparkle-fade {
+  from {
+    transform: scale(1);
+    opacity: 0.8;
+  }
+  to {
+    transform: scale(3);
+    opacity: 0;
   }
 }

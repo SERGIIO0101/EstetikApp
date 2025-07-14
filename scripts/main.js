@@ -1,8 +1,11 @@
 import { inicializarMenu } from './menu.js';
-import './eventos.js';
-// Modal eliminado, no es necesario
-
+import { inicializarCarrusel } from './carrusel.js';
+import { inicializarReservas } from './reservas.js';
+import { inicializarSparkles } from './cursorSparkle.js';
 
 document.addEventListener('DOMContentLoaded', () => {
   inicializarMenu();
+  inicializarCarrusel();
+  inicializarReservas();
+  inicializarSparkles();
 });

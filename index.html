@@ -8,11 +8,25 @@
   <!-- Tipografías -->
   <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
 
+  <!-- Flatpickr CSS & JS -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css" />
+  <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
 
   <!-- Swiper y CSS -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
   <link rel="stylesheet" href="style.css" />
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="https://cdn-icons-png.flaticon.com/512/2920/2920244.png">
+
+  <!-- Metaetiquetas SEO básicas -->
+<meta name="description" content="EstetikApp es una aplicación de reservas para salones de belleza. Proyecto personal de Sergio Severiche.">
+<meta name="keywords" content="EstetikApp, salón de belleza, reservas, citas, estética, Sergio Severiche, proyecto personal">
+<meta name="author" content="Sergio Severiche">
+
+<!-- Meta responsive -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 </head>
 <body>
 
@@ -27,7 +41,7 @@
     <nav class="menu-principal">
       <ul id="menu-lateral">
         <li><a href="#inicio">Inicio</a></li>
-        <li><a href="#reservar">Reservar Cita</a></li>
+        <li><a href="#reservar-cita">Reservar Cita</a></li>
         <li><a href="#personal">Personal</a></li>
         <li><a href="#ubicacion">Ubicación</a></li>
       </ul>
@@ -54,108 +68,142 @@
     </div>
   </section>
 
-  <section id="reservar-cita" class="seccion-reservar oculto">
+  <!-- Sección Reservar Cita con Stepper -->
+ <section id="reservar-cita" class="seccion-reservar oculto">
   <h2>Reserva tu Cita</h2>
-
-  <!-- Stepper -->
-  <div class="stepper">
-    <div class="step active" data-step="1">
-      <div class="circle">1</div>
-      <div class="label">Datos</div>
+  <p class="intro-cita">
+    Agenda tu próxima experiencia de belleza en tan solo 3 pasos. Selecciona tu servicio, el profesional y el horario que más te convenga.
+  </p>
+ 
+    <!-- Stepper -->
+    <div class="stepper">
+      <div class="step active" data-step="1">
+        <div class="circle">1</div>
+        <div class="label">Datos</div>
+      </div>
+      <div class="step" data-step="2">
+        <div class="circle">2</div>
+        <div class="label">Servicio</div>
+      </div>
+      <div class="step" data-step="3">
+        <div class="circle">3</div>
+        <div class="label">Horario</div>
+      </div>
     </div>
-    <div class="step" data-step="2">
-      <div class="circle">2</div>
-      <div class="label">Servicio</div>
-    </div>
-    <div class="step" data-step="3">
-      <div class="circle">3</div>
-      <div class="label">Horario</div>
-    </div>
-  </div>
 
-  <form id="form-cita" class="formulario-cita">
-    <!-- Paso 1 -->
-    <fieldset class="form-step form-step--active" data-step="1">
-      <div class="campo">
-        <label for="nombre">Nombre completo</label>
-        <input type="text" id="nombre" placeholder="Ej. Ana García" required />
-      </div>
-      <div class="buttons">
-        <button type="button" class="btn-secondary btn-next">Siguiente</button>
-      </div>
-    </fieldset>
+    <form id="form-cita" class="formulario-cita">
+      <!-- Paso 1 -->
+      <fieldset class="form-step form-step--active" data-step="1">
+        <div class="campo">
+          <label for="nombre">Nombre completo</label>
+          <input type="text" id="nombre" placeholder="Ej. Ana García" required />
+        </div>
+        <div class="buttons">
+          <button type="button" class="btn-secondary btn-next">Siguiente</button>
+        </div>
+      </fieldset>
 
-    <!-- Paso 2 -->
-    <fieldset class="form-step" data-step="2">
-      <div class="campo">
-        <label for="servicio">Servicio</label>
-        <select id="servicio" required>
-          <option value="">Selecciona un servicio</option>
-          <option value="Uñas">Uñas</option>
-          <option value="Corte de Cabello">Corte de Cabello</option>
-          <option value="Depilación">Depilación</option>
-          <option value="Maquillaje">Maquillaje</option>
-        </select>
-      </div>
-      <div class="campo">
-        <label for="profesional">Profesional</label>
-        <select id="profesional" required>
-          <option value="">Selecciona un profesional</option>
-          <option value="Laura Gómez">Laura Gómez</option>
-          <option value="Sofía Martínez">Sofía Martínez</option>
-          <option value="Carolina Ruiz">Carolina Ruiz</option>
-        </select>
-      </div>
-      <div class="buttons">
-        <button type="button" class="btn-secondary btn-prev">Atrás</button>
-        <button type="button" class="btn-secondary btn-next">Siguiente</button>
-      </div>
-    </fieldset>
+      <!-- Paso 2 -->
+      <fieldset class="form-step" data-step="2">
+        <div class="campo">
+          <label for="servicio">Servicio</label>
+          <select id="servicio" required>
+            <option value="">Selecciona un servicio</option>
+            <option value="Uñas">Uñas</option>
+            <option value="Corte de Cabello">Corte de Cabello</option>
+            <option value="Depilación">Depilación</option>
+            <option value="Maquillaje">Maquillaje</option>
+          </select>
+        </div>
+        <div class="campo">
+          <label for="profesional">Profesional</label>
+          <select id="profesional" required>
+            <option value="">Selecciona un profesional</option>
+            <option value="Laura Gómez">Laura Gómez</option>
+            <option value="Sofía Martínez">Sofía Martínez</option>
+            <option value="Carolina Ruiz">Carolina Ruiz</option>
+          </select>
+        </div>
+        <div class="buttons">
+          <button type="button" class="btn-secondary btn-prev">Atrás</button>
+          <button type="button" class="btn-secondary btn-next">Siguiente</button>
+        </div>
+      </fieldset>
 
-    <!-- Paso 3 -->
-    <fieldset class="form-step" data-step="3">
-      <div class="campo">
-        <label for="fecha">Fecha</label>
-        <input type="date" id="fecha" required />
-      </div>
-      <div class="campo">
-        <label for="hora">Hora</label>
-        <input type="time" id="hora" required />
-      </div>
-      <div class="buttons">
-        <button type="button" class="btn-secondary btn-prev">Atrás</button>
-        <button type="submit" class="btn-principal">Confirmar Cita</button>
-      </div>
-    </fieldset>
+      <!-- Paso 3 -->
+      <fieldset class="form-step" data-step="3">
+        <div class="campo">
+          <label for="fecha">Fecha</label>
+          <input type="date" id="fecha" required />
+        </div>
+        <div class="campo">
+          <label for="hora">Hora</label>
+          <input type="time" id="hora" required />
+        </div>
+        <div class="buttons">
+          <button type="button" class="btn-secondary btn-prev">Atrás</button>
+          <button type="submit" class="btn-principal">Confirmar Cita</button>
+        </div>
+      </fieldset>
 
-    <p id="mensaje-cita" class="mensaje oculto"></p>
-  </form>
-</section>
+      <p id="mensaje-cita" class="mensaje oculto"></p>
+    </form>
+  </section>
 
   <!-- Personal -->
-  <section id="personal" class="seccion-personal">
-    <h2>Nuestro Personal</h2>
-    <!-- Aquí podrías insertar cards de personal luego -->
-  </section>
+  <section id="personal" class="seccion">
+  <h2>Nuestro Personal</h2>
+  <p class="descripcion-seccion">Conoce a nuestras especialistas, comprometidas con tu belleza y bienestar.</p>
+
+  <div class="cards-personal">
+    <div class="card-persona">
+      <img src="assets/personal/laura.jpg" alt="Laura Gómez">
+      <h3>Laura Gómez</h3>
+      <p>Especialista en uñas y cuidado facial</p>
+    </div>
+    <div class="card-persona">
+      <img src="assets/personal/sofia.jpg" alt="Sofía Martínez">
+      <h3>Sofía Martínez</h3>
+      <p>Estilista y maquilladora profesional</p>
+    </div>
+    <div class="card-persona">
+      <img src="assets/personal/carolina.jpg" alt="Carolina Ruiz">
+      <h3>Carolina Ruiz</h3>
+      <p>Depilación con cera y tratamientos naturales</p>
+    </div>
+  </div>
+</section>
 
   <!-- Ubicación -->
-  <section id="ubicacion" class="seccion-ubicacion">
-    <h2>¿Dónde nos encontramos?</h2>
-    <div class="mapa">
-      <iframe src="https://www.google.com/maps/embed?pb=..." width="100%" height="300" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
-    </div>
-    <p><strong>Dirección:</strong> Calle 123 #45-67, Bogotá</p>
-    <p><strong>Teléfono:</strong> 300 123 4567</p>
-    <p><strong>Email:</strong> contacto@estetikapp.com</p>
-  </section>
+ <section id="ubicacion" class="seccion">
+  <h2>Ubicación</h2>
+  <p class="descripcion-seccion">Encuéntranos fácilmente y visítanos cuando quieras consentirte.</p>
 
-  <footer>
-    <p>Hecho con 💖 por Sergio Severiche</p>
-  </footer>
+  <div class="ubicacion-contenido">
+    <div class="mapa">
+      <iframe
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d125415.82920890536!2d-75.54712506435462!3d10.391049974725966!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8ef6257e931b8b3d%3A0xe8831e70b7886765!2sCartagena%2C%20Provincia%20de%20Cartagena%2C%20Bol%C3%ADvar!5e0!3m2!1ses!2sco!4v1721334790001!5m2!1ses!2sco"
+        width="100%" height="300" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+      </iframe>
+    </div>
+    <div class="info-contacto">
+      <h3>Contáctanos</h3>
+      <p><strong>Dirección:</strong> Cra 10 #20-30, Cartagena</p>
+      <p><strong>Teléfono:</strong> <a href="tel:+573132557076">+57 313 255 7076</a></p>
+      <p><strong>WhatsApp:</strong> <a href="https://wa.me/573132557076" target="_blank">Escríbenos</a></p>
+      <p><strong>Email:</strong> <a href="mailto:sergioseveriche1321@hotmail.com">sergioseveriche1321@hotmail.com</a></p>
+      <p><strong>Horario:</strong> Lunes a Sábado 8:00 AM - 6:00 PM</p>
+    </div>
+  </div>
+</section>
+
+ <footer class="footer">
+  <p>EstetikApp &copy; 2025 — Proyecto personal desarrollado por Sergio Severiche.</p>
+</footer>
 
   <!-- Scripts -->
   <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
   <script type="module" src="scripts/main.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
 </body>
 </html>
+

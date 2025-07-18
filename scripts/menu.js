@@ -28,12 +28,14 @@ function mostrarSeccion(id) {
   // Oculta todas las secciones
   document.querySelectorAll('section').forEach(seccion => {
     seccion.classList.add('oculto');
+    seccion.classList.remove('fade-in'); // Por si acaso
   });
 
-  // Muestra solo la sección que coincide con el ID
+  // Muestra la sección seleccionada con animación
   const seccionMostrar = document.querySelector(id);
   if (seccionMostrar) {
     seccionMostrar.classList.remove('oculto');
+    seccionMostrar.classList.add('fade-in');
     seccionMostrar.scrollIntoView({ behavior: 'smooth' });
   }
 }

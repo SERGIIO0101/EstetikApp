@@ -1,4 +1,5 @@
 export function inicializarSparkles() {
+  console.log('✨ Sparkles initialized');
   document.addEventListener('mousemove', (e) => {
     const sparkle = document.createElement('div');
     sparkle.className = 'sparkle';

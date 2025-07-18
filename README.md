@@ -1,63 +1,50 @@
-# EstetikApp – Agenda de Citas para Estéticas
+# 💅 EstetikApp
 
-EstetikApp es una aplicación web sencilla desarrollada con tecnologías frontend que permite a centros de estética y belleza gestionar citas de clientes de forma eficiente y visual.
+**EstetikApp** es una aplicación web sencilla creada como proyecto personal, diseñada para salones de belleza. Permite a los usuarios agendar citas de manera rápida, ver información sobre los servicios, el personal disponible y la ubicación del salón.
 
-## Captura de pantalla
-
-![Interfaz de EstetikApp](./Image/Captura.png)
-
-## Tecnologías utilizadas
+## 🖥️ Tecnologías utilizadas
 
 - HTML5
-- CSS3 (diseño moderno y responsivo)
-- JavaScript (funcionalidad con LocalStorage)
+- CSS3
+- JavaScript (modular)
+- LocalStorage para guardar citas
+- Flatpickr (para selector de fechas)
+- Iconos de Lucide & animaciones personalizadas
 
-## Estructura del proyecto
+## 🎯 Características principales
+
+- Carrusel en la página de inicio
+- Formulario de reservas con validaciones y mensajes emergentes
+- Guardado de citas en el navegador (modo local)
+- Cards informativas del personal
+- Mapa genérico con datos de contacto
+- Menú hamburguesa responsivo
+- Efecto de brillito rosa en el cursor (animación personalizada)
+
+## 📸 Capturas (opcional)
+
+> Aquí puedes incluir capturas de pantalla si lo deseas.
+
+## 🚀 Cómo usar
+
+1. Clona el repositorio o descarga el `.zip` del proyecto.
+2. Abre el archivo `index.html` en tu navegador.
+3. Interactúa con la app para explorar sus funciones.
+
+## 📁 Estructura de carpetas
 
 ```
 EstetikApp/
 │
-├── index.html         # Interfaz principal
-├── style.css          # Estilos personalizados
-├── app.js             # Lógica de validación, guardado y visualización
-├── README.md          # Este archivo
-└── Image/
-        captura.png    # Captura de pantalla
+├── index.html
+├── assets/
+│   ├── css/
+│   ├── js/
+│   └── images/
+├── favicon.ico
+└── README.md
 ```
 
-## Funcionalidades actuales
+## 📝 Nota final
 
-- Registro de citas con nombre, servicio, fecha y hora
-- Validación de campos requeridos
-- Prevención de citas duplicadas
-- Mensajes visuales de error y éxito
-- Eliminación de citas
-- Persistencia en el navegador usando LocalStorage
-
-## Próximas funcionalidades (Versión 2)
-
-- Filtro de citas por fecha o tipo de servicio
-- Validación del horario disponible (8:00 a. m. – 6:00 p. m.)
-- Exportación de agenda en PDF
-- Interfaz mejorada para selección de servicios
-- Guardado de citas en base de datos usando API REST
-- Publicación online en Netlify o Vercel
-
-## Cómo ejecutar el proyecto
-
-1. Clona este repositorio:
-
-```bash
-git clone https://github.com/SERGIIO0101/EstetikApp.git
-```
-
-2. Abre la carpeta del proyecto en VS Code o tu editor favorito.
-
-3. Ejecuta el archivo `index.html` en un navegador moderno.
-
-No requiere instalación adicional ni servidor para esta versión local.
-
-## Autor
-
-**Sergio Severiche**  
-[GitHub – SERGIIO0101](https://github.com/SERGIIO0101)
+Este proyecto fue desarrollado como iniciativa personal por **Sergio Alejandro Severiche Guerrero**, con fines educativos y de práctica en diseño web moderno.

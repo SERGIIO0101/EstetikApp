@@ -154,56 +154,20 @@ body {
   background-color: var(--primario);
 }
 
-/* ===== Sección reservas (vacía al inicio) ===== */
-.seccion-reservas {
-  padding: 40px 20px;
-  background-color: var(--crema);
-  text-align: center;
-}
-
-/* ===== Sección personal ===== */
-.seccion-personal {
-  padding: 40px 20px;
-  background-color: var(--blanco);
-  text-align: center;
-}
-
-/* ===== Sección ubicación ===== */
-.seccion-ubicacion {
-  padding: 40px 20px;
-  background-color: var(--piel-suave);
-  text-align: center;
-}
-
-.seccion-ubicacion iframe {
-  border-radius: 12px;
-  margin-bottom: 20px;
-}
-
-/* ===== Footer ===== */
-footer {
-  text-align: center;
-  padding: 20px;
-  background-color: var(--blanco);
-  font-size: 0.9rem;
-  color: var(--texto);
-  border-top: 1px solid var(--piel-oscura);
-  margin-top: 40px;
-}
-
+/* ===== Sección de Reserva ===== */
 .seccion-reservar {
   background-color: #fff7f1;
   padding: 40px 30px;
   border-radius: 16px;
   max-width: 600px;
   margin: 40px auto;
-  box-shadow: 0 8px 24px rgba(0,0,0,0.05);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.05);
 }
 
 .seccion-reservar h2 {
   text-align: center;
   margin-bottom: 30px;
-  color: #c78f72;
+  color: var(--primario);
 }
 
 .formulario-cita .campo {
@@ -250,14 +214,14 @@ footer {
 
 /* ==== Validación de errores ==== */
 .input-error {
-  border-color: #c0392b;    /* Rojo de error */
+  border-color: #c0392b;
 }
 
 .error-message {
-  color: #c0392b;            /* Mismo rojo para el texto */
-  font-size: 0.875rem;       /* Texto ligeramente más pequeño */
-  margin-top: 5px;           /* Separación del input */
-  font-style: italic;        /* Opción de estilo para diferenciar */
+  color: #c0392b;
+  font-size: 0.875rem;
+  margin-top: 5px;
+  font-style: italic;
 }
 
 /* === Stepper === */
@@ -356,6 +320,7 @@ footer {
   font-size: 0.95rem;
 }
 
+/* === Flatpickr overrides === */
 .flatpickr-calendar {
   background: var(--blanco);
   border: 1px solid var(--piel-oscura);
@@ -379,13 +344,15 @@ footer {
 .sparkle {
   position: fixed;
   pointer-events: none;
-  width: 6px;
-  height: 6px;
-  background: radial-gradient(circle at center, var(--primario) 0%, rgba(0,0,0,0) 70%);
+  width: 8px;
+  height: 8px;
+  background: radial-gradient(circle at center, #ff69b4 0%, rgba(255, 105, 180, 0) 70%);
   border-radius: 50%;
-  opacity: 0.8;
+  opacity: 0.9;
   animation: sparkle-fade 0.6s ease-out forwards;
+  z-index: 9999;
 }
+
 
 @keyframes sparkle-fade {
   from {
@@ -396,4 +363,131 @@ footer {
     transform: scale(3);
     opacity: 0;
   }
+}
+
+.intro-cita {
+  font-size: 1rem;
+  color: #555;
+  max-width: 600px;
+  margin: 0 auto 2rem auto;
+  text-align: center;
+}
+
+.cards-personal {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 24px;
+  margin-top: 2rem;
+}
+
+.card-persona {
+  background-color: var(--blanco);
+  border-radius: 2xl;
+  padding: 1.5rem;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.06);
+  text-align: center;
+  transition: transform 0.3s ease;
+}
+
+.card-persona img {
+  width: 110px;
+  height: 110px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 1rem;
+  border: 3px solid var(--piel-claro);
+}
+
+.card-persona h3 {
+  font-size: 1.1rem;
+  color: var(--primario);
+  margin-bottom: 0.5rem;
+}
+
+.card-persona p {
+  font-size: 0.95rem;
+  color: var(--texto);
+  line-height: 1.4;
+}
+
+.card-persona:hover {
+  transform: translateY(-5px);
+}
+
+.ubicacion-contenido {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  margin-top: 2rem;
+  align-items: flex-start;
+}
+
+.mapa {
+  flex: 1 1 300px;
+  min-width: 300px;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.05);
+}
+
+.info-contacto {
+  flex: 1 1 300px;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: var(--texto);
+}
+
+.info-contacto h3 {
+  color: var(--primario);
+  margin-bottom: 1rem;
+}
+
+.info-contacto a {
+  color: var(--primario);
+  text-decoration: none;
+}
+
+.info-contacto a:hover {
+  text-decoration: underline;
+}
+
+.footer {
+  text-align: center;
+  padding: 1.5rem 1rem;
+  background-color: #ffe3e8;
+  color: #333;
+  font-size: 0.95rem;
+  border-top: 2px solid #ff5c8d;
+}
+
+/* Animación fade-in */
+.fade-in {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeIn 0.8s ease forwards;
+}
+
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.boton {
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.boton:hover {
+  background-color: #ff84a6;
+  transform: scale(1.05);
+}
+
+.card-personal {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card-personal:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0,0,0,0.1);
 }

@@ -1,4 +1,3 @@
-import flatpickr from "https://cdn.jsdelivr.net/npm/flatpickr";
 
 export function inicializarReservas() {
   // Variables para el stepper
